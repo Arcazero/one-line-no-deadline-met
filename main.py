@@ -22,7 +22,7 @@ def main() -> None:
     assert 1 <= len(LINE) <= 200, f"entry line is {len(LINE)} chars, must be 1-200"
     assert "\n" not in LINE, "entry line must be a single line"
     assert LINE.strip(), "entry line must not be only whitespace"
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
         f.write(LINE)
